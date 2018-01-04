@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
-  post 'users/new' => 'users#new'
+  post 'users' => 'users#new'
+  post 'sessions' => 'sessions#create'
+  get 'sessions/new'
+  get '' => 'sessions#new'
+  get 'sessions/logout' => 'sessions#destroy'
 
   get 'users/:id/show' => 'users#show'
   get 'users/listshow'
 
   get 'users/edit'
-
-  get 'sessions/new'
-  get '' => 'sessions#new'
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

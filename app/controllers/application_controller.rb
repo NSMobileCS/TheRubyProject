@@ -7,5 +7,6 @@ class ApplicationController < ActionController::Base
     else
       nil
     end
-    helper_method :current_user
+  end
+  helper_method :current_user
 end

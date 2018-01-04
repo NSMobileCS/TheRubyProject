@@ -30,7 +30,7 @@
 <% if current_user %>
 <h3>
 
-  <form action="/sessions/<%=current_user.id%>/logout" method="post">
+  <form action="/sessions/logout" method="post">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <label>
       logged in as <%=current_user.name%> (<%=current_user.email%>)
