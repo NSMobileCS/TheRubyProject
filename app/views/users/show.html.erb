@@ -1,10 +1,12 @@
-<h2><%= @user.name %></h2>
-<h3><%= @user.email %></h3>
-<hr><hr>
+<h2>
+    <%= @user.name %>s Playlist
+</h2>
 
-<a href='/users/listshow'>
-    <h4>
-        all users - list view
-    </h4>
-</a>
-<hr>
+
+<% @playlist.each do |song| %>
+    <p>
+        <%= song.artist %>
+        <%= song.title %>
+        <%= song.addcounts.map{|e| e.count}.reduce(0, :+).to_s %>
+    </p>
+<% end %>

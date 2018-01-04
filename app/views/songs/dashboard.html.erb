@@ -1,0 +1,30 @@
+<h2>
+    <%= @user.name %>s Playlist
+</h2>
+
+<h5>
+    All the songs in our hub:
+</h5>
+<hr><hr>
+<h2>
+Add a song
+</h2>
+<hr>
+<form action="/songs" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+    <hr>
+    <p>
+        song title
+        <input type='text' id='title' name='title'>
+    </p>
+
+    <hr>
+    <p>
+        artist name
+        <input type="text" id="artist" name = "artist">
+    </p>
+    <hr><hr>
+    <input type="submit" value="Add Song">
+    <hr>
+</form>
