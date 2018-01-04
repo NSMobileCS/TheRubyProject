@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--    <!DOCTYPE html>
 <html>
   <head>
     <title>TheProject</title>
@@ -11,4 +11,34 @@
   <body>
     <%= yield %>
   </body>
+</html>     -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ruby Exam Project App</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<% if flash[:errors] %>
+  <% flash[:errors].each do |e| %>
+    <%= e %>
+  <% end %>
+<% end %>
+<% if current_user %>
+<h3>
+
+  <form action="/sessions/<%=current_user.id%>/logout" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <label>
+      logged in as <%=current_user.name%> (<%=current_user.email%>)
+      <input type="submit" name='submit' value="Log Out">
+    </label>
+  </form>
+</h3>
+<% end %>
+<%= yield %>
+</body>
 </html>
