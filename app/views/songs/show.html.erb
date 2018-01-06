@@ -1,6 +1,7 @@
-<h2>
-Other who added <%= @song.title %> by <%= @song.artist %>...
-</h2>
+
+<!--    <h2>
+            Other who added <%= @song.title by <%= @song.artist %>... %>
+        </h2>   -->
 
 <hr>
 
@@ -15,7 +16,16 @@ Other who added <%= @song.title %> by <%= @song.artist %>...
             </td>
         </tr>
     </th>
-    <% song.%>
-    <tr>
-    </tr>
+    <% @likes.each do |like| %>
+        <tr>
+            <td>
+                <a href="/users/<%= like.user.id.to_s  %>/">
+                    <%= like.user.name %>
+                </a>
+            </td>
+            <td>
+                <%= like.count.to_s %>
+            </td>
+        </tr>
+    <% end %>
 </table>

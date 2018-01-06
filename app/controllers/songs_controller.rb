@@ -12,22 +12,36 @@ class SongsController < ApplicationController
 
   def add
     user = User.find(session[:user_id])
-    song = Song.find(params[:id])
-    user.playlist.songs.push(song)
-    ac = Addcount.where(user: user).where(song: song).take
-    if ac
-      ac.count += 1
-      ac.save
+    song = Song.new(title: params[:title], artist: params[:artist])
+    if song.save
+      like = Songlike.create(user: user, song: song, count: 1)
     else
-      ac = Addcount.create(user: user, song: song, count: 1)
+      flash[:errors] = ['song error make sure you have put in a correct title and artist']
     end
-    redirect_to "/dashboard"
+    redirect_to '/songs'
   end
 
 
   def show
+    user = User.find(session[:user_id])
     @song = Song.find(params[:id])
-    @users = User.all
+    @likes = Songlike.where(song: @song).where.not(user: user)
+    # @users = @song.users.where.not(id: @user).take
   end
 
+  def like_song
+    user = User.find(session[:user_id])
+    song = Song.find(params[:id])
+    if !user
+      redirect_to '/main'
+    end
+    songlike = Songlike.where(user: user, song: song).take
+    if songlike
+      songlike.count += 1
+      songlike.save
+    else
+      songlike = Songlike.create(user: user, song: song, count: 1)
+    end
+    redirect_to '/songs'
+  end
 end

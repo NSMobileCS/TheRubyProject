@@ -84,5 +84,7 @@ production:
   <<: *default
   database: TheProject_production
   username: ubuntu
+  # username: vagrant
+
 
   password: <%= ENV['THEPROJECT_DATABASE_PASSWORD'] %>

@@ -1,15 +1,17 @@
 Rails.application.routes.draw do
 
-  get 'songs/dashboard'
+  get 'songs' => 'songs#dashboard'
+  post 'songs' => 'songs#add'
+  post 'songs/:id' => 'songs#like_song'
+  get 'songs/:id' => 'songs#show'
 
-  get 'songs/show'
 
-  post 'users' => 'users#new'
   post 'sessions' => 'sessions#create'
   get '' => 'sessions#new'
   get 'main' => 'sessions#new'
   get 'sessions/logout' => 'sessions#destroy'
 
+  post 'users' => 'users#new'
   get 'users/:id/show' => 'users#show'
   get 'users/listshow'
 
