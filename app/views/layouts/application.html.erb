@@ -30,7 +30,7 @@
 <% if current_user %>
 <h3>
 
-  <form action="/sessions/logout" method="post">
+  <form action="/sessions/logout" method="get">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <label>
       logged in as <%=current_user.name%> (<%=current_user.email%>)
@@ -38,7 +38,7 @@
     </label>
   </form>
 </h3>
-<hr><hr>
+<hr><hr><hr>
 <% end %>
 <%= yield %>
 </body>

@@ -33,7 +33,7 @@
                 </a>
             </td>
             <td>
-                <%= song.songlikes.count.to_s %>
+                <%= song.songlikes.reduce(0){ |memo, elem|  memo + elem.count } %>
             </td>
             <td>
                 <form action='/songs/<%= song.id.to_s %>' method='post'>
