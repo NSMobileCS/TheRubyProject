@@ -2,11 +2,31 @@
     <%= @user.name %>s Playlist
 </h2>
 
-
-<% @playlist.each do |song| %>
-    <p>
-        <%= song.artist %>
-        <%= song.title %>
-        <%= song.addcounts.map{|e| e.count}.reduce(0, :+).to_s %>
-    </p>
-<% end %>
+<table>
+    <th>
+        <tr>
+            <td>
+                artist
+            </td>
+            <td>
+                title
+            </td>
+            <td>
+                times added
+            </td>
+        </tr>
+    </th>
+    <% @user.songlikes.each do |like| %>
+        <tr>
+            <td>
+                <%= like.song.artist %>
+            </td>
+            <td>
+                <%= like.song.title %>
+            </td>
+            <td>
+                <%= like.count %>
+            </td>
+        </tr>
+    <% end %>
+</table>

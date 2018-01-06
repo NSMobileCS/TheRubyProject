@@ -23,9 +23,11 @@ class SongsController < ApplicationController
 
 
   def show
-    user = User.find(session[:user_id])
     @song = Song.find(params[:id])
-    @likes = Songlike.where(song: @song).where.not(user: user)
+    puts '________*&&&&&&&&&SONG TITLE!!!!!!**'
+    puts @song.title
+
+    # @likes = Songlike.where(song: @song).where.not(user: @user)
     # @users = @song.users.where.not(id: @user).take
   end
 

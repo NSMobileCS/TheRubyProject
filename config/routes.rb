@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'sessions/logout' => 'sessions#destroy'
 
   post 'users' => 'users#new'
-  get 'users/:id/show' => 'users#show'
+  get 'users/:id' => 'users#show'
   get 'users/listshow'
 
 

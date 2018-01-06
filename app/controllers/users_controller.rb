@@ -14,7 +14,6 @@ class UsersController < ApplicationController
   def show
     if session[:user_id]
       @user = User.find(params[:id])
-      @playlist = Playlist.find_by(user: @user)
     else
       flash[:errors] = ["you must log in"]
       redirect_to '/main'
